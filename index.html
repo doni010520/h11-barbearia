@@ -136,30 +136,17 @@
 
   .hero-visual{position:relative}
   .hero-frame{
-    position:relative;aspect-ratio:5/4;border-radius:24px;overflow:hidden;
+    position:relative;aspect-ratio:3/2;border-radius:24px;overflow:hidden;
     background:#3a3a3a;
     box-shadow:0 40px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(212,178,106,.3);
   }
-  .team-row{position:absolute;inset:0;display:flex;align-items:stretch}
-  .team-row .tm{flex:1;position:relative;overflow:hidden}
-  .team-row .tm img{
-    width:100%;height:100%;object-fit:cover;object-position:center 20%;
-    display:block;filter:contrast(1.05) saturate(1.05);
-  }
-  /* Feather the seams so all 3 blend into one shot */
-  .team-row .tm:nth-child(1) img{object-position:60% 20%}
-  .team-row .tm:nth-child(2) img{object-position:center 20%}
-  .team-row .tm:nth-child(3) img{object-position:40% 20%}
-  .team-row .tm:not(:last-child)::after{
-    content:"";position:absolute;top:0;bottom:0;right:-1px;width:40px;
-    background:linear-gradient(90deg,transparent,rgba(58,58,58,.9),transparent);
-    pointer-events:none;z-index:2;
-  }
+  .team-shot{position:absolute;inset:0}
+  .team-shot img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.05)}
   /* Warm color grade over the whole shot */
   .hero-frame::before{
     content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
     background:
-      radial-gradient(ellipse 90% 60% at 50% 30%, rgba(212,178,106,.08), transparent 70%),
+      radial-gradient(ellipse 90% 60% at 50% 30%, rgba(212,178,106,.10), transparent 70%),
       linear-gradient(180deg, transparent 55%, rgba(7,10,26,.35) 100%);
   }
   /* Golden sparkle accents */
@@ -408,10 +395,8 @@
     </div>
     <div class="hero-visual">
       <div class="hero-frame">
-        <div class="team-row">
-          <div class="tm"><img src="assets/team-2.jpg" alt="Miguel"></div>
-          <div class="tm"><img src="assets/team-1.jpg" alt="Bruno"></div>
-          <div class="tm"><img src="assets/team-3.jpg" alt="Elisângela"></div>
+        <div class="team-shot">
+          <img src="assets/team-hero.jpg" alt="Time H11 — Miguel, Bruno e Elisângela">
         </div>
         <span class="sparkle s1"></span>
         <span class="sparkle s2"></span>
