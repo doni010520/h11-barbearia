@@ -137,18 +137,38 @@
   .hero-visual{position:relative}
   .hero-frame{
     position:relative;aspect-ratio:4/5;border-radius:24px;overflow:hidden;
-    padding:16px;
-    background:linear-gradient(135deg,var(--blue),var(--blue-2));
+    background:
+      radial-gradient(ellipse 70% 70% at 50% 45%, rgba(44,58,170,.4), transparent 70%),
+      linear-gradient(135deg,var(--blue),var(--blue-2));
     box-shadow:0 40px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(212,178,106,.25);
   }
-  .team-montage{
-    display:grid;grid-template-columns:1fr 1.3fr;grid-template-rows:1fr 1fr;
-    gap:10px;width:100%;height:100%;position:relative;z-index:1;
+  .team-montage{position:relative;width:100%;height:100%}
+  .team-montage .tm{position:absolute;overflow:hidden}
+  .team-montage .tm img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.05)}
+  .tm-left{
+    left:-8%;top:10%;width:55%;height:62%;z-index:1;
+    -webkit-mask-image:radial-gradient(ellipse 85% 95% at 65% 50%, #000 30%, transparent 88%);
+            mask-image:radial-gradient(ellipse 85% 95% at 65% 50%, #000 30%, transparent 88%);
+    transform:rotate(-4deg);
   }
-  .team-montage .tm{border-radius:14px;overflow:hidden;background:rgba(0,0,0,.3);position:relative}
-  .team-montage .tm img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-  .team-montage .tm:hover img{transform:scale(1.05)}
-  .team-montage .tm-main{grid-row:1 / span 2}
+  .tm-right{
+    right:-8%;bottom:10%;width:55%;height:62%;z-index:1;
+    -webkit-mask-image:radial-gradient(ellipse 85% 95% at 35% 50%, #000 30%, transparent 88%);
+            mask-image:radial-gradient(ellipse 85% 95% at 35% 50%, #000 30%, transparent 88%);
+    transform:rotate(4deg);
+  }
+  .tm-main{
+    left:14%;top:4%;width:72%;height:88%;z-index:2;
+    -webkit-mask-image:radial-gradient(ellipse 78% 88% at 50% 45%, #000 45%, transparent 92%);
+            mask-image:radial-gradient(ellipse 78% 88% at 50% 45%, #000 45%, transparent 92%);
+    filter:drop-shadow(0 25px 40px rgba(0,0,0,.55));
+  }
+  .team-montage .tm-main img{filter:contrast(1.08) saturate(1.08)}
+  /* Golden sparkle accents */
+  .hero-frame .sparkle{position:absolute;border-radius:50%;background:radial-gradient(circle, rgba(212,178,106,.8), transparent 70%);pointer-events:none;z-index:2}
+  .hero-frame .sparkle.s1{width:6px;height:6px;top:14%;left:22%;box-shadow:0 0 12px 2px rgba(212,178,106,.6)}
+  .hero-frame .sparkle.s2{width:4px;height:4px;top:70%;right:18%;box-shadow:0 0 10px 2px rgba(212,178,106,.5)}
+  .hero-frame .sparkle.s3{width:5px;height:5px;top:38%;right:8%;box-shadow:0 0 10px 2px rgba(212,178,106,.5)}
   .hero-frame::after{
     content:"";position:absolute;left:0;right:0;bottom:0;height:45%;z-index:2;
     background:linear-gradient(180deg,transparent 0%, rgba(7,10,26,.9) 90%);
@@ -391,10 +411,13 @@
     <div class="hero-visual">
       <div class="hero-frame">
         <div class="team-montage">
+          <div class="tm tm-left"><img src="assets/team-2.jpg" alt="Miguel"></div>
+          <div class="tm tm-right"><img src="assets/team-3.jpg" alt="Elisângela"></div>
           <div class="tm tm-main"><img src="assets/team-1.jpg" alt="Bruno"></div>
-          <div class="tm"><img src="assets/team-2.jpg" alt="Miguel"></div>
-          <div class="tm"><img src="assets/team-3.jpg" alt="Elisângela"></div>
         </div>
+        <span class="sparkle s1"></span>
+        <span class="sparkle s2"></span>
+        <span class="sparkle s3"></span>
         <div class="hero-caption">
           <div class="logo-chip"><img src="assets/logo.png" alt="H11"></div>
           <div class="cap-text">Clube H11 · Exclusivo</div>
